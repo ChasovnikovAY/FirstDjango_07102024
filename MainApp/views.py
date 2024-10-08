@@ -26,8 +26,9 @@ def about(request):
     return HttpResponse(text)
 
 def get_item(request, item_num):
-    if item_num in items:
-        text = f"товар {item_num}, Имя {items[item_num]}"
+    item = list(filter(lambda x: x['id'] == item_num, items))
+    if item:
+        text = f"товар {item[0]["name"]}, количество {item[0]["quantity"]}"
     else:
         text = f"Товар с id={item_num} не найден"
     return HttpResponse(text)
