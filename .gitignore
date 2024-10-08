@@ -1,0 +1,9 @@
+*env/
+*.рус
+.DS_Store
+.idea/
+.vscode/
+*.tmp
+*.db
+*.sqllite
+*.sqllite3
