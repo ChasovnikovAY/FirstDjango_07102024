@@ -32,3 +32,9 @@ def get_item(request, item_num):
     else:
         text = f"Товар с id={item_num} не найден"
     return HttpResponse(text)
+
+def get_items(request):
+    text = ""
+    for i in items:
+        text += f"<a href='/item/{i['id']}/'>{i['name']} {str(i['quantity'])} штук </a><br>"
+    return HttpResponse(text)
