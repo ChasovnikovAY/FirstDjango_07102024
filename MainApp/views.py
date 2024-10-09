@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 items = [
 {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
@@ -11,10 +11,11 @@ items = [
 
 # Create your views here.
 def home(request):
-    text = """<h1>Изучаем Django<h1>
-    <strong>Часовников А.Ю.</strong>
-    """
-    return HttpResponse(text)
+    context = {
+        "name": "Часовников Алексей Юрьевич",
+        "email": "my_email@mail.ru"
+    }
+    return render(request, "index.html", context)
 
 def about(request):
     text = """
@@ -26,15 +27,14 @@ def about(request):
     return HttpResponse(text)
 
 def get_item(request, item_num):
-    item = next(filter(lambda x: x['id'] == item_num, items))
-    if item:
-        text = f"товар {item["name"]}, количество {item["quantity"]}"
-    else:
-        text = f"Товар с id={item_num} не найден"
-    return HttpResponse(text)
+    item = filter(lambda x: x['id'] == item_num, items)
+    if len(list(item)) > 0:
+        return render(request, "task2_1.html", next(item))
+    return HttpResponseNotFound(f"Товар с номером {item_num} не найден")
 
 def get_items(request):
-    text = ""
-    for i in items:
-        text += f"<a href='/item/{i['id']}/'>{i['name']} {str(i['quantity'])} штук </a><br>"
-    return HttpResponse(text)
+    # text = ""
+    # for i in items:
+    #     text += f"<a href='/item/{i['id']}/'>{i['name']} {str(i['quantity'])} штук </a><br>"
+    return render(request,"get_items.html", { "item_list": items} )
+    #return HttpResponse(text)
