@@ -1,13 +1,16 @@
+from typing import ItemsView
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
+from MainApp.models import Item
 
-items = [
-{"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
-{"id": 2, "name": "Куртка кожаная" ,"quantity":2},
-{"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
-{"id": 7, "name": "Картофель фри" ,"quantity":0},
-{"id": 8, "name": "Кепка" ,"quantity":124},
-]
+# items = [
+# {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
+# {"id": 2, "name": "Куртка кожаная" ,"quantity":2},
+# {"id": 5, "name": "Coca-cola 1 литр" ,"quantity":12},
+# {"id": 7, "name": "Картофель фри" ,"quantity":0},
+# {"id": 8, "name": "Кепка" ,"quantity":124},
+# ]
 
 # Create your views here.
 def home(request):
@@ -35,6 +38,7 @@ def get_item(request, item_num):
 def get_items(request):
     # text = ""
     # for i in items:
+    item = Item.objects.all()
     #     text += f"<a href='/item/{i['id']}/'>{i['name']} {str(i['quantity'])} штук </a><br>"
-    return render(request,"get_items.html", { "item_list": items} )
+    return render(request,"get_items.html", { "items": items} )
     #return HttpResponse(text)

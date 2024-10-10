@@ -5,8 +5,8 @@
     <title>Список товаров</title>
 </head>
 <body>
-{% for el in item_list.items %}
-<a href="/item/{{ el['id'] }}/"> {{ el["name"] }} -  {{ str(el["quantity"]) }} штук </a><br>
+{% for item in items %}
+  <a href="/item/{{ item.id }}/"> {{ item.name }} </a><br>
 {% endfor %}
 </body>
 </html>
