@@ -1,5 +1,3 @@
-from typing import ItemsView
-
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from MainApp.models import Item
@@ -30,15 +28,11 @@ def about(request):
     return HttpResponse(text)
 
 def get_item(request, item_num):
-    item = filter(lambda x: x['id'] == item_num, items)
-    if len(list(item)) > 0:
-        return render(request, "task2_1.html", next(item))
-    return HttpResponseNotFound(f"Товар с номером {item_num} не найден")
+    one_item = Item.objects.get(id=item_num)
+    context = { "item":one_item }
+    return render(request, "task2_1.html", context)
+
 
 def get_items(request):
-    # text = ""
-    # for i in items:
-    item = Item.objects.all()
-    #     text += f"<a href='/item/{i['id']}/'>{i['name']} {str(i['quantity'])} штук </a><br>"
-    return render(request,"get_items.html", { "items": items} )
-    #return HttpResponse(text)
+    item_list = Item.objects.all()
+    return render(request,"get_items.html", { "items": item_list} )

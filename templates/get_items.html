@@ -6,7 +6,11 @@
 </head>
 <body>
 {% for item in items %}
-  <a href="/item/{{ item.id }}/"> {{ item.name }} </a><br>
+  <div style="border: 4px double black; width:200px; height:200px; float: left"><a href="/item/{{ item.id }}/"> {{ item.name }}</a><br>
+      {{ item.description }}
+  </div>
 {% endfor %}
+
+</table>
 </body>
 </html>
