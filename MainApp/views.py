@@ -33,6 +33,6 @@ def get_item(request, item_num):
     return render(request, "task2_1.html", context)
 
 
-def get_items(request):
+def items_list(request):
     item_list = Item.objects.all()
     return render(request,"get_items.html", { "items": item_list} )

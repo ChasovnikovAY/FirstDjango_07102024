@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Изучаем Django</h1>
-Студент - {{ name }}<br>
-Почтовый адрес {{ email }}<br>
-<h2>Сайт пока в разработке</h2>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block menu_content %}
+    block.super
+{% endblock %}
