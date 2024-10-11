@@ -30,7 +30,7 @@ def about(request):
 def get_item(request, item_num):
     one_item = Item.objects.get(id=item_num)
     context = { "item":one_item }
-    return render(request, "task2_1.html", context)
+    return render(request, "item.html", context)
 
 
 def items_list(request):

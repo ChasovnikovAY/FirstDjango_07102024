@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Список товаров</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block menu_content %}
+    {{ block.super }}
+{% endblock %}
+
 {% for item in items %}
-  <div style="border: 4px double black; width:200px; height:200px; float: left"><a href="/item/{{ item.id }}/"> {{ item.name }}</a><br>
+  <div style="border: 4px double black; width:200px; height:200px; float: left">
+      <a href="{% url 'get_item' item.id %}}/"> {{ item.name }}</a><br>
       {{ item.description }}
   </div>
 {% endfor %}
-
-</table>
-</body>
-</html>
