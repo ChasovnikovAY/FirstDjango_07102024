@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Информация о товаре:</title>
-</head>
-<body>
-<ol>
-<h1>Наименование: {{ item.name }}</h1>
-<h1>Количество: {{ item.count }}</h1>
-</ol>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block menu_content %}
+    {{ block.super }}
+{% endblock %}
+
+{% block block_content %}
+    <ol>
+    <h1>Наименование: {{ item.name }}</h1>
+    <h1>Количество: {{ item.count }}</h1>
+    </ol>
+{% endblock %}
