@@ -27,8 +27,8 @@ def about(request):
     """
     return HttpResponse(text)
 
-def get_item(request, item_num):
-    one_item = Item.objects.get(id=item_num)
+def get_item(request, item_id):
+    one_item = Item.objects.get(id=item_id)
     context = { "item":one_item }
     return render(request, "item.html", context)
 

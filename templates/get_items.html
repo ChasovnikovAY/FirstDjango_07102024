@@ -7,7 +7,7 @@
 {% block block_content %}
     {% for item in items %}
       <div style="border: 4px double black; width:200px; height:200px; float: left">
-          <a href="{% url 'get_item' item.id %}}/"> {{ item.name }}</a><br>
+          <a href="{% url 'get_item' item.id %}"> {{ item.name }}</a><br>
           {{ item.description }}
       </div>
     {% endfor %}
