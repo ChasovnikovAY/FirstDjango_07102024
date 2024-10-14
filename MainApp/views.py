@@ -29,7 +29,8 @@ def about(request):
 
 def get_item(request, item_id):
     one_item = Item.objects.get(id=item_id)
-    context = { "item":one_item }
+    context = { "item":one_item,
+                "colors": one_item.colors.all()}
     return render(request, "item.html", context)
 
 

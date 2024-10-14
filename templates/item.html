@@ -5,8 +5,11 @@
 {% endblock %}
 
 {% block block_content %}
-    <ol>
+    <h1>Код: {{ item.id }}</h1>
     <h1>Наименование: {{ item.name }}</h1>
     <h1>Количество: {{ item.count }}</h1>
-    </ol>
+    {% for ic in item.colors.all %}
+        {{ ic }}
+    {% endfor %}
+
 {% endblock %}

@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 
+{% block style %}
+    {{ block.super }}
+{% endblock  %}
+
 {% block menu_content %}
     {{ block.super }}
 {% endblock %}
 
+
+
 {% block block_content %}
+    <div class="items">
     {% for item in items %}
-      <div style="border: 4px double black; width:200px; height:200px; float: left">
+      <div  class="item">
           <a href="{% url 'get_item' item.id %}"> {{ item.name }}</a><br>
           {{ item.description }}
       </div>
     {% endfor %}
+    </div>
 {% endblock %}
